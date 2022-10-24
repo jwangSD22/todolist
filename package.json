@@ -17,11 +17,12 @@
     "url": "https://github.com/jwangSD22/todolist/issues"
   },
   "homepage": "https://github.com/jwangSD22/todolist#readme",
+  "dependencies": {
+    "chance": "^1.1.9",
+    "date-fns": "^2.29.3"
+  },
   "devDependencies": {
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
-  },
-  "dependencies": {
-    "date-fns": "^2.29.3"
   }
 }
