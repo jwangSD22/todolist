@@ -15,7 +15,10 @@ window.document.addEventListener('DOMContentLoaded',
 function (){
     getTodoList();
     document.getElementById('taskForm').addEventListener('submit', saveTodo);
-    document.getElementById('folderPointer').innerHTML = `<div>${window.headerPointer}</div>`
+    
+    if (window.headerPointer === 'todoList'){document.getElementById('folderPointer').innerHTML = `<div>To-Do List</div>`}
+
+
     document.getElementById('today').addEventListener('click', ()=>{window.dateToCompare=endOfToday();getTodoList()});
     document.getElementById('tomorrow').addEventListener('click', ()=>{window.dateToCompare=endOfTomorrow();getTodoList()});
     document.getElementById('thisWeek').addEventListener('click', ()=>{window.dateToCompare=endOfWeek(new Date());getTodoList()});

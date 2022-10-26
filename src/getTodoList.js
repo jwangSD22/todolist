@@ -1,4 +1,4 @@
-import { isBefore, parseISO,  } from 'date-fns'
+import { isBefore, parseISO, lightFormat , endOfYesterday} from 'date-fns'
 import { deleteFxn } from './deleteFxn';
 
 
@@ -26,8 +26,8 @@ function getTodoList(){
     renderBox.innerHTML += `
     <div class="todoInList">
     Name:${name}   
-    DueDate:${dueDate}
-   
+    <br>Due Date:${lightFormat(parseISO(dueDate),'MM-dd-yyyy')}
+    
     Priority:${priority}
     
     Project:${project}
@@ -35,9 +35,6 @@ function getTodoList(){
     Description:${description}
     <div class="delete" id="${id}">delete</div>
     </div>`
-    }
-    if (isBefore(parseISO(list[i].dueDate),new Date())){
-        renderBox.innerHTML+=`<div id=pastDue>Past Due</div>`
     }
     }
 }

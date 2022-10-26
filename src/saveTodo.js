@@ -17,10 +17,11 @@ function saveTodo(e){
     let priority = document.getElementById('prioritySelect').value;
     let project = window.headerPointer
     let description = document.getElementById('description').value;
-    
+    if (dueDate===''){dueDate = new Date()}
     let todoItem = new todoTask(id,name,dueDate,priority,project,description)
-console.log(dueDate)    
-    if(dueDate===''||isBefore(parseISO(dueDate),endOfYesterday())){alert('Please enter a valid due date');return}
+console.log(dueDate)
+
+    if(isBefore(parseISO(dueDate),endOfYesterday())){alert('Please enter a valid due date');return}
 
     if (localStorage.getItem('list')===null)
     {let list = [];
