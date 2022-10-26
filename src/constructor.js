@@ -1,5 +1,6 @@
 class todoTask {
-    constructor (name,dueDate,priority,project,description){
+    constructor (id, name,dueDate,priority,project,description){
+    this.id=id
     this.name = name
     this.dueDate = dueDate
     this.priority = priority
@@ -8,13 +9,6 @@ class todoTask {
     }  
 }
 
-function renderTodo() {
-    let todoList = JSON.parse(localStorage.getItem('todoList'));
-    }
-
-    let testVar = 'todoList';
-    let myVar = 'banj';
-
     export{
-        todoTask, renderTodo, testVar, myVar
+        todoTask
     }
