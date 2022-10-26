@@ -8,8 +8,7 @@ let chance = new Chance();
 
 
 function saveTodo(e){
-    console.log(e)
-    e.preventDefault();
+      e.preventDefault();
     
     let id = chance.guid();
     let name = document.getElementById('taskName').value;
@@ -17,9 +16,9 @@ function saveTodo(e){
     let priority = document.getElementById('prioritySelect').value;
     let project = window.headerPointer
     let description = document.getElementById('description').value;
+    console.log(dueDate)
     if (dueDate===''){dueDate = new Date()}
     let todoItem = new todoTask(id,name,dueDate,priority,project,description)
-console.log(dueDate)
 
     if(isBefore(parseISO(dueDate),endOfYesterday())){alert('Please enter a valid due date');return}
 
