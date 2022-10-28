@@ -2,8 +2,6 @@ import {
   isBefore, parseISO, lightFormat,
 } from 'date-fns';
 
-
-
 function getTodoList() {
   const list = JSON.parse(localStorage.getItem('list'));
   const renderBox = document.getElementById('renderBox');
