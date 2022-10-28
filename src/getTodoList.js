@@ -1,29 +1,31 @@
-import { isBefore, parseISO, lightFormat , endOfYesterday} from 'date-fns'
-import { deleteFxn } from './deleteFxn';
+import {
+  isBefore, parseISO, lightFormat,
+} from 'date-fns';
 
 
-function getTodoList(){
-    var list = JSON.parse(localStorage.getItem('list'))
-    var renderBox = document.getElementById('renderBox');
 
-    renderBox.innerHTML = '';
+function getTodoList() {
+  const list = JSON.parse(localStorage.getItem('list'));
+  const renderBox = document.getElementById('renderBox');
 
-    if (list === null){return}
-    else{
-    for (var i = 0; i< list.length; i++){
-        if(list[i].project===window.headerPointer&&isBefore(parseISO(list[i].dueDate),window.dateToCompare)){
-        let id = list[i].id;
-        let name = list[i].name;
-        let dueDate = list[i].dueDate;
-        let priority = list[i].priority;
-        let project = list[i].project;
-        let description = list[i].description;
-    
+  renderBox.innerHTML = '';
 
-    renderBox.innerHTML += `
+  if (list === null) { return; }
+
+  for (let i = 0; i < list.length; i += 1) {
+    if (list[i].project === window.headerPointer
+      && isBefore(parseISO(list[i].dueDate), window.dateToCompare)) {
+      const { id } = list[i];
+      const { name } = list[i];
+      const { dueDate } = list[i];
+      const { priority } = list[i];
+      const { project } = list[i];
+      const { description } = list[i];
+
+      renderBox.innerHTML += `
     <div class="todoInList">
     Name:${name}   
-    <br>Due Date:${lightFormat(parseISO(dueDate),'MM-dd-yyyy')}
+    <br>Due Date:${lightFormat(parseISO(dueDate), 'MM-dd-yyyy')}
     
     Priority:${priority}
     
@@ -31,18 +33,29 @@ function getTodoList(){
    
     Description:${description}
     <div class="delete" id="${id}">delete</div>
-    </div>`
+    </div>`;
     }
+  }
+
+  function deleteFxn() {
+    //    if (confirm('Are you sure you want to delete this task?')){
+    const list = JSON.parse(localStorage.getItem('list'));
+    for (let i = 0; i < list.length; i += 1) {
+      if (this.getAttribute('id') === list[i].id) {
+        list.splice(i, 1);
+        localStorage.setItem('list', JSON.stringify(list));
+      }
     }
+    getTodoList();
+    // }
+    // else {console.log('not confirmed')}
+  }
+
+  const deleteList = document.getElementsByClassName('delete');
+
+  for (let i = 0; i < deleteList.length; i += 1) {
+    deleteList[i].addEventListener('click', deleteFxn);
+  }
 }
 
-let deleteList = document.getElementsByClassName('delete')
-
-for (let i=0;i<deleteList.length;i++)
-{
-    deleteList[i].addEventListener('click',deleteFxn)
-}
-
-}
-
-export {getTodoList}
+export { getTodoList };

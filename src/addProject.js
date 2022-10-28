@@ -1,15 +1,38 @@
-//function for the event listener to create a DIV
+// function for the event listener to create a DIV
 
-import { add } from "date-fns"
-import { changeHeader } from "./changeHeader"
-import { getTodoList } from "./getTodoList"
+import changeHeader from './changeHeader';
 
-export function addProject(e){
+function projectCancel() {
+  const parent = document.getElementById('addProject');
+  const child = document.getElementById('projectBox');
+  parent.removeChild(child);
+  const addProjectDiv = document.getElementById('addProject');
+  setTimeout(() => addProjectDiv.addEventListener('click', addProject), 50);
+}
 
-    let addProjectDiv = document.getElementById('addProject')
-    let projectBox = document.createElement('div')
-    projectBox.setAttribute('id','projectBox')
-    projectBox.innerHTML = `
+function projectAdd() {
+  const projectTxt = document.getElementById('projectBoxText').value;
+  const newProject = document.createElement('div');
+  const tempParent = document.getElementById('newProjects');
+  const parent = document.getElementById('addProject');
+  const child = document.getElementById('projectBox');
+  const addProjectDiv = document.getElementById('addProject');
+  const textContent = projectTxt;
+
+  newProject.setAttribute('class', 'projectContBtn');
+  newProject.innerText = `${textContent}`;
+  parent.removeChild(child);
+  tempParent.appendChild(newProject);
+  newProject.addEventListener('click', () => { changeHeader(textContent); });
+  changeHeader(textContent);
+  setTimeout(() => addProjectDiv.addEventListener('click', addProject), 50);
+}
+
+export default function addProject() {
+  const addProjectDiv = document.getElementById('addProject');
+  const projectBox = document.createElement('div');
+  projectBox.setAttribute('id', 'projectBox');
+  projectBox.innerHTML = `
     <form><div id="projectInput"><textarea id ="projectBoxText" placeholder="my new project" cols="30"></textarea>
     <div id="addCancel">
         <div id="addBtn">add</div>
@@ -17,40 +40,11 @@ export function addProject(e){
     </div>
     </div>
     </form>
-    `
-    addProjectDiv.appendChild(projectBox)
-    addProjectDiv.removeEventListener('click',addProject)
-    let addBtn = document.getElementById('addBtn')
-    let cancelBtn = document.getElementById('cancelBtn')
-    cancelBtn.addEventListener('click',projectCancel)
-    addBtn.addEventListener('click',projectAdd)
-
-  }
-
-    function projectCancel(){
-    let parent = document.getElementById('addProject')
-    let child = document.getElementById('projectBox')
-    parent.removeChild(child)
-    console.log('child removed')
-    let addProjectDiv = document.getElementById('addProject')
-    setTimeout(()=>addProjectDiv.addEventListener('click', addProject),50)
-  }
-
-    function projectAdd(){
-    let projectTxt = document.getElementById('projectBoxText').value
-    let newProject = document.createElement('div')
-    let superParent = document.getElementById('projectContainer')
-    let tempParent = document.getElementById('newProjects')
-    let parent = document.getElementById('addProject')
-    let child = document.getElementById('projectBox')
-    let addProjectDiv = document.getElementById('addProject')
-    let textContent = projectTxt
-
-    newProject.setAttribute('class','projectContBtn')
-    newProject.innerText=`${textContent}`
-    parent.removeChild(child)
-    tempParent.appendChild(newProject)
-    newProject.addEventListener('click',()=>{changeHeader(textContent)})
-    changeHeader(textContent)
-    setTimeout(()=>addProjectDiv.addEventListener('click', addProject),50)
-    }
+    `;
+  addProjectDiv.appendChild(projectBox);
+  addProjectDiv.removeEventListener('click', addProject);
+  const addBtn = document.getElementById('addBtn');
+  const cancelBtn = document.getElementById('cancelBtn');
+  cancelBtn.addEventListener('click', projectCancel);
+  addBtn.addEventListener('click', projectAdd);
+}
