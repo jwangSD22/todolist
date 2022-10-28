@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="/dist/main.js"></script>
+    <div id="appContainer">
+    <div id="header">header</div>
+    <div id="mainBody">
+        <div id="sidebar">
+            <div id="dateFilter">
+                <div class="dateFilterButton" id="today">today</div>
+                <div class="dateFilterButton" id="tomorrow">tomorrow</div>
+                <div class="dateFilterButton" id="thisWeek">this week</div>
+                <div class="dateFilterButton" id="thisMonth">this month</div>
+                <div class="dateFilterButton" id="thisYear">this year</div>
+                <div class="dateFilterButton" id="allTime">all tasks</div>
+            </div>
+            <div id="projectContainer">
+                <div class = "projectContBtn" id="projectList">Projects:</div>
+                <div class = "projectContBtn" id="mainTodo">Main To-Do List</div>
+                <div class = "projectContBtn" id="addProject">+ new project</div>
+            </div>
+        </div>
+        <div id="content">
+
+            <div id="folderPointer">To-Do List</div>
+            <div id="newTaskForm">
+                New Task Here
+                <form id="taskForm">
+                    <div id="taskTop">
+                    <label for="taskName">Task Name:</label>
+                    <input type="text" id="taskName"name="taskName">
+                    <label for="dueDate">Due Date:</label>
+                    <input type="date" id="dueDate" name="dueDate">
+                    </div>
+                    <div id="priorityField">Priority
+                        <select class="form-control" id="prioritySelect">
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                          </select> 
+                        </div>
+                    <br>
+                    <textarea id="description"name="description"rows="4"cols="50"placeholder="task description"></textarea>
+                    <input type="submit" id="submit" name="submit">
+
+                </form>
+            </div>
+            <div id="renderBox">big render box here</div>
+            
+
+        </div>
+    </div>
+    <div id="footer">my footer</div>
+</div>
+
+
+
+</body>
+</html>
