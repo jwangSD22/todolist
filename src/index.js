@@ -5,6 +5,8 @@ import {saveTodo} from '/src/saveTodo.js'
 import { endOfToday, endOfTomorrow, endOfWeek, endOfMonth, endOfYear, parseISO, maxTime} from 'date-fns'
 import { addProject } from './addProject';
 import { changeHeader } from './changeHeader';
+import { deleteProject } from './deleteProject';
+import { populateProjects } from './populateProjects';
 
 
 window.headerPointer = 'todoList'
@@ -15,11 +17,11 @@ window.dateToCompare = new Date(5000, 12 , 31)
 
 window.document.addEventListener('DOMContentLoaded',
 function (){
+    populateProjects();
     getTodoList();
     document.getElementById('taskForm').addEventListener('submit', saveTodo);
     document.getElementById('addProject').addEventListener('click',addProject)
-    
-
+    document.getElementById('deleteProject').addEventListener('click',deleteProject)
     document.getElementById('mainTodo').addEventListener('click',()=>{changeHeader('todoList')})
     document.getElementById('today').addEventListener('click', ()=>{window.dateToCompare=endOfToday();getTodoList()});
     document.getElementById('tomorrow').addEventListener('click', ()=>{window.dateToCompare=endOfTomorrow();getTodoList()});

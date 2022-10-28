@@ -40,6 +40,7 @@ export function addProject(e){
     let projectTxt = document.getElementById('projectBoxText').value
     let newProject = document.createElement('div')
     let superParent = document.getElementById('projectContainer')
+    let tempParent = document.getElementById('newProjects')
     let parent = document.getElementById('addProject')
     let child = document.getElementById('projectBox')
     let addProjectDiv = document.getElementById('addProject')
@@ -48,7 +49,7 @@ export function addProject(e){
     newProject.setAttribute('class','projectContBtn')
     newProject.innerText=`${textContent}`
     parent.removeChild(child)
-    superParent.insertBefore(newProject,addProjectDiv)
+    tempParent.appendChild(newProject)
     newProject.addEventListener('click',()=>{changeHeader(textContent)})
     changeHeader(textContent)
     setTimeout(()=>addProjectDiv.addEventListener('click', addProject),50)

@@ -106,12 +106,45 @@
     flex-direction: column;
     align-items: center;
 }
+#contentHeader{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    align-content: center;
+
+}
+#headerBtnContainer{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#hidden{
+    display:flex;
+    flex:1;
+}
 
 #folderPointer{
     font-family: 'Courier New', Courier, monospace;
     font-size: 3rem;
+    overflow:visible;
     display:flex;
-    align-items: center;
+    flex:7;
+    justify-content: center;
+}
+
+#deleteProject {
+    display:flex;
+    flex:1
+}
+
+#headerAddTask {
+    display:flex;
+    justify-content: center;
+    align-self: center;
+    border-radius: 5px;
+    border: solid 2px red;
+    width:300px;
 }
 
 #newTaskForm{
@@ -133,9 +166,6 @@
 
 }
 
-#folderPointer{
-    height:10%
-}
 
 #renderBox{
     width:90%;

@@ -6,9 +6,6 @@ function getTodoList(){
     var list = JSON.parse(localStorage.getItem('list'))
     var renderBox = document.getElementById('renderBox');
 
-    
-
-
     renderBox.innerHTML = '';
 
     if (list === null){return}

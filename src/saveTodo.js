@@ -16,7 +16,6 @@ function saveTodo(e){
     let priority = document.getElementById('prioritySelect').value;
     let project = window.headerPointer
     let description = document.getElementById('description').value;
-    console.log(dueDate)
     if (dueDate===''){dueDate = new Date()}
     let todoItem = new todoTask(id,name,dueDate,priority,project,description)
 
